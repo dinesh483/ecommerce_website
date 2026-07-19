@@ -5,13 +5,28 @@
    ========================================================= */
 
 const API = (() => {
-  const DEFAULT_BASE = "http://127.0.0.1:8000";
-  let base = localStorage.getItem("atelier_api_base") || DEFAULT_BASE;
+  const DEFAULT_BASE = "http://127.0.0.1:8001";
+  const FALLBACK_BASES = [
+    "http://127.0.0.1:8001",
+    "http://127.0.0.1:8000",
+    "http://localhost:8001",
+    "http://localhost:8000"
+  ];
+
+  function normalizeBase(url) {
+    return (url || "").replace(/\/+$/, "");
+  }
+
+  let base = DEFAULT_BASE;
 
   function getBase() { return base; }
   function setBase(url) {
-    base = url.replace(/\/+$/, "");
+    base = normalizeBase(url) || DEFAULT_BASE;
     localStorage.setItem("atelier_api_base", base);
+  }
+
+  function getCandidateBases() {
+    return [...new Set([base, ...FALLBACK_BASES].filter(Boolean))];
   }
 
   function getToken() { return localStorage.getItem("atelier_token") || ""; }
@@ -24,35 +39,55 @@ const API = (() => {
       const t = getToken();
       if (t) headers["Authorization"] = `Bearer ${t}`;
     }
-    let res;
-    try {
-      res = await fetch(base + path, {
-        method,
-        headers,
-        body: form ? body : body !== undefined ? JSON.stringify(body) : undefined,
-      });
-    } catch (e) {
-      const err = new Error(
-        `Could not reach the backend at ${base}. Is it running and is CORS enabled? (${e.message})`
-      );
-      err.network = true;
-      throw err;
+
+    const candidates = getCandidateBases();
+    let lastError = null;
+
+    for (const candidate of candidates) {
+      try {
+        const res = await fetch(candidate + path, {
+          method,
+          headers,
+          body: form ? body : body !== undefined ? JSON.stringify(body) : undefined,
+        });
+
+        if (res.status === 204) {
+          base = candidate;
+          localStorage.setItem("atelier_api_base", base);
+          return null;
+        }
+
+        const text = await res.text();
+        let data = null;
+        try { data = text ? JSON.parse(text) : null; } catch (_) { data = text; }
+
+        if (res.ok) {
+          base = candidate;
+          localStorage.setItem("atelier_api_base", base);
+          return data;
+        }
+
+        if (res.status >= 400 && res.status < 500) {
+          base = candidate;
+          localStorage.setItem("atelier_api_base", base);
+          const detail = (data && data.detail) ? data.detail : res.statusText;
+          const err = new Error(typeof detail === "string" ? detail : JSON.stringify(detail));
+          err.status = res.status;
+          err.data = data;
+          throw err;
+        }
+
+        lastError = new Error(`Backend responded with ${res.status} at ${candidate}`);
+      } catch (e) {
+        lastError = e;
+      }
     }
 
-    if (res.status === 204) return null;
-
-    let data = null;
-    const text = await res.text();
-    try { data = text ? JSON.parse(text) : null; } catch (_) { data = text; }
-
-    if (!res.ok) {
-      const detail = (data && data.detail) ? data.detail : res.statusText;
-      const err = new Error(typeof detail === "string" ? detail : JSON.stringify(detail));
-      err.status = res.status;
-      err.data = data;
-      throw err;
-    }
-    return data;
+    const err = new Error(
+      `Could not reach the backend. Tried: ${candidates.join(", ")}. (${lastError?.message || "unknown error"})`
+    );
+    err.network = true;
+    throw err;
   }
 
   async function ping() {
@@ -63,6 +98,8 @@ const API = (() => {
       return false;
     }
   }
+
+  console.info("Atelier API base:", base);
 
   return {
     getBase, setBase, getToken, setToken, ping,
