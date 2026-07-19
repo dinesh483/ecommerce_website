@@ -429,11 +429,10 @@ h4 {
 
 .hero-art {
   position: relative;
-  aspect-ratio: 5/6;
-  max-height: 480px;
+  aspect-ratio: 4/5;
   background: linear-gradient(145deg, rgba(255, 252, 247, 0.98), rgba(243, 234, 220, 0.96));
   border: 1px solid rgba(232, 223, 207, 0.95);
-  border-radius: 26px;
+  border-radius: 34px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -463,10 +462,10 @@ h4 {
 
 .hero-badge {
   position: absolute;
-  top: 14px;
-  left: 14px;
+  top: 18px;
+  left: 18px;
   z-index: 2;
-  padding: 7px 10px;
+  padding: 8px 12px;
   border-radius: 999px;
   background: rgba(255, 252, 247, 0.92);
   border: 1px solid rgba(22, 26, 32, 0.08);
@@ -537,54 +536,61 @@ h4 {
 
 .spotlight-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 24px;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
   align-items: stretch;
 }
 
 .editorial-card {
-  padding: 30px;
-  border-radius: 28px;
+  padding: 22px 24px;
+  border-radius: 22px;
   background: linear-gradient(135deg, rgba(255, 252, 247, 0.98), rgba(246, 238, 227, 0.96));
   border: 1px solid rgba(232, 223, 207, 0.95);
   box-shadow: var(--shadow-card);
 }
 
 .editorial-card h3 {
-  margin: 12px 0 10px;
-  font-size: clamp(22px, 2.4vw, 28px);
+  margin: 10px 0 8px;
+  font-size: clamp(20px, 2.1vw, 24px);
   line-height: 1.15;
 }
 
-.editorial-card p {
-  margin: 0 0 18px;
+.hero-card {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2;
+  padding: 18px 20px;
+  border-radius: 22px;
+  background: rgba(255, 252, 247, 0.94);
+  border: 1px solid rgba(232, 223, 207, 0.95);
+  box-shadow: 0 24px 44px -26px rgba(22, 26, 32, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+.hero-card strong {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 1.15;
+}
+
+.hero-card p {
+  margin: 8px 0 0;
   color: var(--muted);
-  max-width: 520px;
+  font-size: 13px;
 }
 
-.stack-cards {
-  display: grid;
-  gap: 16px;
+.hero-card-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
 }
 
-.feature-card {
-  padding: 22px 24px;
-}
-
-.feature-card h4 {
-  margin: 10px 0 8px;
-  font-size: 18px;
-}
-
-.feature-card p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 13.5px;
-}
-
-/* =========================================================
-   HANG TAG — signature price element
-   ========================================================= */
 .hangtag {
   --tag-w: 108px;
   position: relative;
