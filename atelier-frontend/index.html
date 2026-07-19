@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Atelier — Considered goods, sold plainly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-bar">
+    <a href="index.html" class="brand">Atelier<small>FASHION EDITS</small></a>
+    <nav class="main-nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="shop.html">Dresses</a>
+      <a href="account.html">Orders</a>
+      <a href="admin.html" data-admin-link>Studio</a>
+    </nav>
+    <div class="header-actions" style="position:relative;">
+      <button class="icon-btn" data-open-search aria-label="Search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </button>
+      <div class="search-flyout" id="search-flyout"><input type="text" placeholder="Search products…" /></div>
+      <a class="icon-btn" data-account-link href="login.html" aria-label="Account">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.8-4 5-6 8-6s6.2 2 8 6"/></svg>
+      </a>
+      <button class="icon-btn" data-open-cart aria-label="Cart">
+        <svg viewBox="0 0 24 24"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg>
+        <span class="badge-count cart-badge" style="display:none;">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-copy">
+    <div class="hero-label-row">
+      <span class="eyebrow">Statement dresses for every moment</span>
+      <span class="hero-pill">New season edit</span>
+    </div>
+    <h1>Modern dresses designed to <em>turn heads</em>.</h1>
+    <p>Discover elevated silhouettes, flowing fabrics, and timeless evening-to-everyday styles made to feel effortless, polished, and unforgettable.</p>
+    <div class="hero-actions">
+      <a href="shop.html" class="btn btn-primary">Shop dresses</a>
+      <a href="shop.html" class="btn btn-outline">View new arrivals</a>
+    </div>
+    <div class="hero-meta">
+      <div><strong id="stat-products">—</strong>ready-to-wear styles</div>
+      <div><strong id="stat-categories">—</strong>fashion collections</div>
+      <div><strong>Free</strong>delivery and returns</div>
+    </div>
+  </div>
+  <div class="hero-art">
+    <div class="hero-badge">Featured dress</div>
+    <div class="hero-spotlight">
+      <img id="hero-image" src="" alt="Featured product" />
+      <div class="hero-card">
+        <span class="eyebrow">Curated now</span>
+        <strong id="hero-spotlight-name">loading</strong>
+        <p>Elegant detailing, flattering cuts, and polished style made for the moments that matter.</p>
+        <div class="hero-card-row">
+          <span class="hero-price" id="hero-spotlight-price">—</span>
+          <a href="shop.html" class="text-link">See collection</a>
+        </div>
+      </div>
+    </div>
+    <div class="hangtag" id="hero-tag" style="display:none;">
+      <span class="price">—</span>
+      <span class="price-sub">loading</span>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+      <span class="eyebrow">Shop by mood</span>
+      <h2 style="margin-top:6px;">Find your perfect dress</h2>
+      </div>
+    </div>
+    <div class="cat-strip" id="home-categories">
+      <span class="cat-chip skeleton" style="width:90px;height:34px;"></span>
+      <span class="cat-chip skeleton" style="width:110px;height:34px;"></span>
+      <span class="cat-chip skeleton" style="width:80px;height:34px;"></span>
+    </div>
+  </div>
+</section>
+
+<section class="block tinted">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Just landed</span>
+        <h2 style="margin-top:6px;">New arrivals</h2>
+      </div>
+      <a href="shop.html" class="see-all">View all →</a>
+    </div>
+    <div class="product-grid" id="home-products">
+      <div class="product-card"><div class="pc-media skeleton"></div><div class="pc-body"><div class="skeleton" style="height:14px;width:60%;"></div></div></div>
+      <div class="product-card"><div class="pc-media skeleton"></div><div class="pc-body"><div class="skeleton" style="height:14px;width:60%;"></div></div></div>
+      <div class="product-card"><div class="pc-media skeleton"></div><div class="pc-body"><div class="skeleton" style="height:14px;width:60%;"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap spotlight-grid">
+    <div class="editorial-card">
+      <span class="eyebrow">Why Atelier</span>
+      <h3>Every dress is chosen to feel polished, flattering, and effortless.</h3>
+      <p>We blend modern silhouettes, premium fabrics, and refined details to create looks that move seamlessly from day to evening.</p>
+      <a href="shop.html" class="btn btn-outline">Explore the collection</a>
+    </div>
+    <div class="stack-cards">
+      <div class="card-panel feature-card">
+        <span class="eyebrow">01 — craftsmanship</span>
+        <h4>Tailored with intention</h4>
+        <p>Each design is selected for fit, flow, and the kind of confidence it brings.</p>
+      </div>
+      <div class="card-panel feature-card">
+        <span class="eyebrow">02 — availability</span>
+        <h4>Live inventory</h4>
+        <p>What you see in stock is updated in real time so your favorite dress is ready when you are.</p>
+      </div>
+      <div class="card-panel feature-card">
+        <span class="eyebrow">03 — service</span>
+        <h4>Seamless delivery</h4>
+        <p>Track every order from dispatch to delivery right from your account.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand">Atelier<small>FASHION</small></div>
+      <p>Modern dresses and refined staples curated for effortless dressing, from day plans to evening occasions.</p>
+    </div>
+    <div><h4>Shop</h4><ul>
+      <li><a href="shop.html">All dresses</a></li>
+      <li><a href="shop.html?sort=new">New arrivals</a></li>
+      <li><a href="shop.html?sort=low-stock">Almost gone</a></li>
+    </ul></div>
+    <div><h4>Account</h4><ul>
+      <li><a href="login.html">Sign in</a></li>
+      <li><a href="register.html">Create account</a></li>
+      <li><a href="account.html">My orders</a></li>
+    </ul></div>
+    <div><h4>Studio</h4><ul>
+      <li><a href="admin.html">Admin panel</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 ATELIER FASHION</span>
+    <span>BUILT ON FASTAPI + VANILLA JS</span>
+  </div>
+</footer>
+
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>
