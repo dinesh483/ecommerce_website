@@ -14,8 +14,8 @@ DB_NAME = os.getenv("DB_NAME", "ecommerce_db")
 
 
 SQLALCHEMY_DATABASE_URL = (
-    f"postgresql+psycopg://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
-    "?sslmode=require&channel_binding=require"
+    f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+
 )
 
 engine = create_engine(

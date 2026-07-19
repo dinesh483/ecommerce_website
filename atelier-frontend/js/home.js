@@ -24,12 +24,8 @@
       qs("#hero-image").src = productImg(featured);
       qs("#hero-image").alt = featured.name;
       qs("#hero-tag").style.display = "block";
-      qs("#hero-spotlight-price").textContent = money(featured.price);
-      qs("#hero-spotlight-name").textContent = featured.name;
-      const tagPrice = qs("#hero-tag .price");
-      const tagSub = qs("#hero-tag .price-sub");
-      if (tagPrice) tagPrice.textContent = money(featured.price);
-      if (tagSub) tagSub.textContent = featured.name;
+      qs("#hero-price").textContent = money(featured.price);
+      qs("#hero-name").textContent = featured.name;
       qs("#hero-image").closest(".hero-art").querySelector("img").addEventListener("click", () => {
         window.location.href = `product.html?id=${featured.id}`;
       });
