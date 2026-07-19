@@ -429,10 +429,11 @@ h4 {
 
 .hero-art {
   position: relative;
-  aspect-ratio: 4/5;
+  aspect-ratio: 5/6;
+  max-height: 480px;
   background: linear-gradient(145deg, rgba(255, 252, 247, 0.98), rgba(243, 234, 220, 0.96));
   border: 1px solid rgba(232, 223, 207, 0.95);
-  border-radius: 34px;
+  border-radius: 26px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -462,10 +463,10 @@ h4 {
 
 .hero-badge {
   position: absolute;
-  top: 18px;
-  left: 18px;
+  top: 14px;
+  left: 14px;
   z-index: 2;
-  padding: 8px 12px;
+  padding: 7px 10px;
   border-radius: 999px;
   background: rgba(255, 252, 247, 0.92);
   border: 1px solid rgba(22, 26, 32, 0.08);
@@ -479,12 +480,12 @@ h4 {
 
 .hero-card {
   position: absolute;
-  left: 20px;
-  right: 20px;
-  bottom: 20px;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
   z-index: 2;
-  padding: 18px 20px;
-  border-radius: 22px;
+  padding: 14px 16px;
+  border-radius: 18px;
   background: rgba(255, 252, 247, 0.94);
   border: 1px solid rgba(232, 223, 207, 0.95);
   box-shadow: 0 24px 44px -26px rgba(22, 26, 32, 0.35);
@@ -493,16 +494,16 @@ h4 {
 
 .hero-card strong {
   display: block;
-  margin-top: 8px;
+  margin-top: 6px;
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.15;
 }
 
 .hero-card p {
-  margin: 8px 0 0;
+  margin: 6px 0 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 12.5px;
 }
 
 .hero-card-row {
@@ -510,7 +511,7 @@ h4 {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-top: 12px;
+  margin-top: 10px;
 }
 
 .hero-price {
