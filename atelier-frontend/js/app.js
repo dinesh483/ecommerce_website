@@ -171,7 +171,7 @@ function injectShell() {
     pill.innerHTML = `<button id="api-pill-btn"><span class="dot" id="api-dot"></span><span id="api-label">API</span></button>`;
     document.body.appendChild(pill);
     qs("#api-pill-btn").addEventListener("click", openApiModal);
-    refreshApiPill();
+    setTimeout(refreshApiPill, 250);
   }
 
   if (!qs("#api-modal")) {

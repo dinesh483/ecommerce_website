@@ -6,15 +6,20 @@
 
   qs("#f-search").value = currentSearch;
 
-  try {
-    categories = await API.listCategories();
-  } catch (e) { /* non-fatal */ }
-
+  const categoriesPromise = API.listCategories().catch(() => []);
   const catList = qs("#f-categories");
-  catList.innerHTML = `<label><input type="radio" name="cat" value="" ${!currentCategory ? "checked" : ""}/> All collections</label>` +
-    categories.map(c => `<label><input type="radio" name="cat" value="${c.id}" ${String(c.id) === currentCategory ? "checked" : ""}/> ${escapeHTML(c.name)}</label>`).join("");
 
-  qsa('input[name="cat"]', catList).forEach(r => r.addEventListener("change", () => { currentCategory = r.value; load(); }));
+  function renderCategories() {
+    catList.innerHTML = `<label><input type="radio" name="cat" value="" ${!currentCategory ? "checked" : ""}/> All collections</label>` +
+      categories.map(c => `<label><input type="radio" name="cat" value="${c.id}" ${String(c.id) === currentCategory ? "checked" : ""}/> ${escapeHTML(c.name)}</label>`).join("");
+
+    qsa('input[name="cat"]', catList).forEach(r => r.addEventListener("change", () => { currentCategory = r.value; load(); }));
+  }
+
+  categoriesPromise.then((result) => {
+    categories = result;
+    renderCategories();
+  });
 
   let searchTimer;
   qs("#f-search").addEventListener("input", (e) => {
