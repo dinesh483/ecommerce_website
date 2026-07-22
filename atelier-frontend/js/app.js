@@ -5,8 +5,15 @@
    ========================================================= */
 
 /* ---------- helpers ---------- */
+const moneyFormatter = new Intl.NumberFormat("en-IN", {
+  style: "currency",
+  currency: "INR",
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+
 function money(n) {
-  return "$" + Number(n).toFixed(2);
+  return moneyFormatter.format(Number(n) || 0);
 }
 
 function initials(name) {
